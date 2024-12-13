@@ -162,11 +162,23 @@
 <div id="finalPopup" class="modal">
     <div class="modal-content">
         <h2>Will you be my girlfriend?</h2>
-        <button onclick="alert('Yay!')">Yes</button>
+        <button onclick="showVideoModal()">Yes</button>
         <button onclick="alert('Take your time :)')">I’m not sure yet</button>
     </div>
 </div>
 
+
+    <!-- Video Modal -->
+<div id="videoModal" class="modal">
+    <div class="modal-content">
+        <video id="loveVideo" controls autoplay style="width: 100%; border-radius: 10px;">
+            <source src="your-video-url.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <button onclick="closeVideoModal()">Close</button>
+    </div>
+</div>
+    
 <script>
     let currentImage = 1;
     const totalImages = 5; // Adjust based on the number of images
@@ -201,6 +213,17 @@
         }
     }
 
+    function showVideoModal() {
+        document.getElementById('finalPopup').style.display = 'none';
+        document.getElementById('videoModal').style.display = 'flex';
+    }
+
+    function closeVideoModal() {
+        const video = document.getElementById('loveVideo');
+        video.pause(); // Pause the video when closing
+        video.currentTime = 0; // Reset the video to the start
+        document.getElementById('videoModal').style.display = 'none';
+    }
 
     function showNextModal2() {
         document.querySelector('.modal').style.display = 'none';
